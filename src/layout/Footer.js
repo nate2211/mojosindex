@@ -10,18 +10,18 @@ export function Footer(){
         <Flex h="10vh" bg="gray.200" flexDirection="column">
             <Center w='100%' h={"5vh"}>
                 <HStack>
-                    <Text textAlign='center' fontSize={['.75em', '1em']} as={Link} to={"/shipping"}>Shipping Policy</Text>
-                    <Text textAlign='center' fontSize={['.75em', '1em']} as={Link} to={"/terms&conditions"}>Terms & Conditions</Text>
-                    <Text textAlign='center' fontSize={['.75em', '1em']} as={Link} to={"/returns"}>Return Policy</Text>
-                    <Text textAlign='center' fontSize={['.75em', '1em']} as={Link} to={"/privacy"}>Privacy Policy</Text>
+                    <Text textAlign='center' fontSize={['.60em', '1em']} as={Link} to={"/shipping"}>Shipping Policy</Text>
+                    <Text textAlign='center' fontSize={['.60em', '1em']} as={Link} to={"/terms&conditions"}>Terms & Conditions</Text>
+                    <Text textAlign='center' fontSize={['.60em', '1em']} as={Link} to={"/returns"}>Return Policy</Text>
+                    <Text textAlign='center' fontSize={['.60em', '1em']} as={Link} to={"/privacy"}>Privacy Policy</Text>
                 </HStack>
             </Center>
             <Center w='100%' h={"5vh"}>
                 <HStack>
-                    <Text textAlign='center' fontSize={['.75em', '1em']} as={Link} to={"/aboutus"}>About Us</Text>
-                    <Text textAlign='center' fontSize={['.75em', '1em']} as={Link} to={"/contact"}>Contact</Text>
-                    <Text textAlign='center' fontSize={['.75em', '1em']} as={Link} to={"/faq"}>FAQ</Text>
-                    <Text textAlign='center' fontSize={['.75em', '1em']} as={Link} to={"/returnfaq"}>Returns</Text>
+                    <Text textAlign='center' fontSize={['.60em', '1em']} as={Link} to={"/aboutus"}>About Us</Text>
+                    <Text textAlign='center' fontSize={['.60em', '1em']} as={Link} to={"/contact"}>Contact</Text>
+                    <Text textAlign='center' fontSize={['.60em', '1em']} as={Link} to={"/faq"}>FAQ</Text>
+                    <Text textAlign='center' fontSize={['.60em', '1em']} as={Link} to={"/returnfaq"}>Returns</Text>
                 </HStack>
             </Center>
             <Spacer />
@@ -29,13 +29,13 @@ export function Footer(){
                 <Flex flexDirection="column" w="100%" alignItems="flex-end">
                     <Image src={stripe_logo} boxSize='25px' alignSelf="self-end"/>
                     <HStack>
-                        <Image src={axp_logo} boxSize='15px'/>
+                        <Image src={axp_logo} boxSize='12px'/>
 
-                        <Image src={discover_logo} boxSize='15px'/>
+                        <Image src={discover_logo} boxSize='12px'/>
 
-                        <Image src={mc_logo} boxSize='15px'/>
+                        <Image src={mc_logo} boxSize='12px'/>
 
-                        <Image src={visa_logo} boxSize='15px'/>
+                        <Image src={visa_logo} boxSize='12px'/>
                     </HStack>
                 </Flex>
             </Box>
