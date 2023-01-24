@@ -43,6 +43,7 @@ export const FullProductCard = ({data}) => {
                     name="Mojos Index product page"
                     content={`${item.desc}`}
                 />
+                <link rel="canonical" href={window.location}/>
             </Helmet>
             <Card w='100%'>
                 <CardHeader><Heading>{item.title}</Heading></CardHeader>
