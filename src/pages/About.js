@@ -129,7 +129,7 @@ export function ReturnFaq(){
             <CardHeader><Heading>Return FAQ</Heading></CardHeader>
             <Divider mt={4} mb={4} p='0'/>
             <CardBody>
-                <Link to={"/returns"}>Make a Return</Link>
+                <Link to={"/contact"}>Make a Return</Link>
                 <List spacing={2}>
                     <ListItem>
                         Any claim for misprinted/damaged/defective products must be submitted within 30 days after the product is received. For packages lost in transit, all claims must be submitted no more the 30 days

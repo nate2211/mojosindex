@@ -73,7 +73,7 @@ export function Login(){
 
 
 export function Signup(){
-    const {signup} = useAuthContext()
+    const {user, signup} = useAuthContext()
     const firstname = useRef()
     const lastname = useRef()
     const number = useRef()
@@ -82,8 +82,7 @@ export function Signup(){
     const password= useRef()
     const confirmpassword = useRef()
     const emailupdate = useRef()
-
-
+    const navigate = useNavigate()
     function SignUp(e){
         e.preventDefault()
         if(password.current.value !== confirmpassword.current.value){
@@ -102,7 +101,11 @@ export function Signup(){
 
     }
 
-
+    useEffect(() => {
+        if(user !== null){
+            navigate("/")
+        }
+    }, [user])
     return(
         <Container>
             <Helmet>

@@ -1,20 +1,21 @@
 import React from "react";
 import {
     WrapItem,
-    Wrap, Heading,  Box,Divider
+    Wrap, Heading, Box, Divider, Flex, Center, Text, Button, Stack, Container
 } from "@chakra-ui/react";
 import axios from "axios";
 import {useQuery} from "react-query";
 import {FeaturedCard, ProductCard} from "../components/Cards";
 import {SuspenseElement} from "../ui/Suspense";
 import {Helmet} from "react-helmet-async";
+import {useNavigate} from "react-router-dom";
 
 export function Home(){
 
 
     function HomeShowCase(){
         const {isLoading, isError, isSuccess, error, data} = useQuery('showcase', () =>
-            axios.get('http://127.0.0.1:8000/api/products/?site=Mojos%20Index&showcase=True').then((res) => res.data))
+            axios.get('https://mojos.herokuapp.com/api/products/?site=Mojos%20Index&showcase=True').then((res) => res.data))
         return(
             <SuspenseElement isLoading={isLoading} isError={isError} isSuccess={isSuccess} error={error} data={data}>
                 <ShowCase/>
@@ -24,7 +25,7 @@ export function Home(){
 
     function HomeFeatured(){
         const {isLoading, isError, isSuccess, error, data} = useQuery('featured', () =>
-            axios.get('http://127.0.0.1:8000/api/products/?site=Mojos%20Index&featured=True').then((res) => res.data))
+            axios.get('https://mojos.herokuapp.com/api/products/?site=Mojos%20Index&featured=True').then((res) => res.data))
         return(
             <SuspenseElement isLoading={isLoading} isError={isError} isSuccess={isSuccess} error={error} data={data}>
                 <Featured/>
@@ -50,28 +51,30 @@ export function Home(){
 
 const Featured = ({data}) => {
     return(
-        <Box w='fit-content' m='auto'>
+        <Box  w='fit-content' m='auto'>
             <Heading>Featured</Heading>
             <Divider mt={4} mb={4}/>
+            <Wrap justify='center'>
             {data.map((item, i) => {
                 return(
-                    <React.Fragment key={i}>
-                        <Box bgImage={`url(http://127.0.0.1:8000${item.background})`} w='100%' backgroundSize='75%'>
-                            <Heading>{item.title}</Heading>
+                    <WrapItem key={i}>
+                        <Box bgImage={`url(https://res.cloudinary.com/hsdvgholu/${item.background})`} w='100%' backgroundSize='75%'>
+                            <Container backgroundColor='white'><Heading>{item.title}</Heading></Container>
                             <Divider/>
                             <FeaturedCard variants={item.variants}/>
                         </Box>
                         <Divider mt={4} mb={4}/>
-                    </React.Fragment>
+                    </WrapItem>
                 )
             })}
+            </Wrap>
         </Box>
 
     )
 }
 
 const ShowCase = ({data}) => {
-
+    const navigate = useNavigate()
     return(
         <Box w='fit-content' m='auto'>
             <Heading>Showcase</Heading>
@@ -79,10 +82,17 @@ const ShowCase = ({data}) => {
             {data.map((item, i) => {
                 return(
                     <React.Fragment key={i}>
-                        <Box bgImage={`url(http://127.0.0.1:8000${item.background})`} w='100%' backgroundSize='75%'>
+                        <Box bgImage={`url(https://res.cloudinary.com/hsdvgholu/${item.background})`} w='100%' backgroundSize='75%'>
                             <Heading>{item.title}</Heading>
                             <Divider/>
                             <Wrap justify='center'>
+                                <WrapItem>
+                                    <Stack m='auto'>
+                                        <Text w='25rem' as='b'>{item.desc}</Text>
+                                        <Button onClick={() => navigate(`shop/&type=${item.type}`)} w='25rem'>View All</Button>
+                                    </Stack>
+                                </WrapItem>
+
                                 {item.variants.map((variant, i) => {
                                     return(<WrapItem key={i}>
                                         <ProductCard product={variant}/>

@@ -33,7 +33,7 @@ export function Product(){
     const {id} = useParams()
     const ProductCard = () => {
         const {isLoading, isError, isSuccess, error, data} = useQuery(['product', id], () =>
-            axios.get(`http://127.0.0.1:8000/api/products/?site=Mojos%20Index&id=${id.slice(0, id.indexOf('&'))}`).then((res) => res.data))
+            axios.get(`https://mojos.herokuapp.com/api/products/?site=Mojos%20Index&id=${id.slice(0, id.indexOf('&'))}`).then((res) => res.data))
         return(<SuspenseElement isLoading={isLoading} isError={isError} isSuccess={isSuccess} error={error} data={data}>
             <FullProductCard/>
         </SuspenseElement> )
@@ -57,7 +57,7 @@ export const Recommended = ({item}) => {
                     return (
                             <Card m='2' key={i}>
                                 <CardHeader><Heading textOverflow={"ellipsis"}>{variant.name}</Heading></CardHeader>
-                                <CardBody><Image src={`http://127.0.0.1:8000${variant.image}`} boxSize={[ "12.5rem"]}/></CardBody>
+                                <CardBody><Image src={`https://mojos.herokuapp.com${variant.image}`} boxSize={[ "12.5rem"]}/></CardBody>
                                 <CardFooter><Button onClick={() => navigate(`/product/${variant.product}&${variant.index}`)}>View</Button></CardFooter>
                             </Card>
                     )
@@ -66,7 +66,7 @@ export const Recommended = ({item}) => {
     }
     const RecommendedQuery = () => {
         const {isLoading, isError, isSuccess, error, data} = useQuery('recommended', () =>
-            axios.post(`http://127.0.0.1:8000/api/variants/recommended/`, {payload: {"producttype":  item.variants[0].producttype} , id: {"product": item.variants[0].product}}).then((res) => res.data))
+            axios.post(`https://mojos.herokuapp.com/api/variants/recommended/`, {payload: {"producttype":  item.variants[0].producttype} , id: {"product": item.variants[0].product}}).then((res) => res.data))
         return(<SuspenseElement isLoading={isLoading} isError={isError} isSuccess={isSuccess} error={error} data={data}>
             <RecommendedItems/>
         </SuspenseElement> )
@@ -92,13 +92,13 @@ export const SelectedVariantList = ({product, vid}) => {
     return(
         <>
             <ImageMagnifier>
-                <Image src={`http://127.0.0.1:8000${variants[index].image}`} boxSize={['18em']} m='auto'/>
+                <Image src={`https://res.cloudinary.com/hsdvgholu/${variants[index].image}`} boxSize={['18em']} m='auto'/>
             </ImageMagnifier>
             <Wrap justify='center'>
                 {[].concat(variants.slice(0,index), variants.slice(index + 1)).map((variant, i) => {
                     return(
                         <WrapItem key={i}>
-                            <Image src={`http://127.0.0.1:8000${variant.image}`} boxSize={['5.50em', '7.50em']} onClick={() => setIndex(variant.index)}/>
+                            <Image src={`https://res.cloudinary.com/hsdvgholu/${variant.image}`} boxSize={['5.50em', '7.50em']} onClick={() => setIndex(variant.index)}/>
                         </WrapItem>)
                 })}
             </Wrap>
@@ -187,7 +187,7 @@ export const SelectedVariantList = ({product, vid}) => {
                 </AccordionItem>
             </Accordion>
             <Center m='2'><Button onClick={()=> addToCart()}>Add to Cart ${variants[index].price}</Button></Center>
-            {user !== null && <Center m='2'><Button onClick={()=> addwishlist(variants[index])}>Add to WishList</Button></Center>}
+            {user !== null && <Center m='2'><Button onClick={()=> addwishlist(variants[index])}>Add to Wishlist</Button></Center>}
         </>
     )
 }
@@ -215,7 +215,7 @@ const ReviewPanel = ({product, index}) => {
             <ReviewModal variants={variants} index={index}/>
             <Flex alignItems='center' justifyContent='space-evenly' w='15em'>
                 <Box>
-                    <Image src={`http://127.0.0.1:8000${variants[index].image}`} boxSize={'4.50em'}/>
+                    <Image src={`https://res.cloudinary.com/hsdvgholu/${variants[index].image}`} boxSize={'4.50em'}/>
                 </Box>
                 <Box>
                     <BarReview rating={variants[index].review_average}/>

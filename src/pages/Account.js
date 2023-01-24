@@ -56,9 +56,6 @@ import {Helmet} from "react-helmet-async";
 export function Account(){
     const {user, updateAccount, updateAddress, removeAddress, refreshAccount} = useAuthContext()
     const navigate = useNavigate()
-
-
-
     function UserDisplay(){
         const [disabled, setDisabled] = useState(true)
         const username = useRef()
@@ -86,7 +83,7 @@ export function Account(){
                     </FormControl>
                     <FormControl>
                         <FormLabel>Phone Number</FormLabel>
-                        <Input type='number' maxLength={10} minLength={10} defaultValue={user.number} disabled={disabled} ref={number}/>
+                        <Input type='number' maxLength={10} minLength={10} defaultValue={user.number.replace("(", "").replace(")", "").replace("-", "").replace(" ", "")} disabled={disabled} ref={number}/>
                     </FormControl>
                     <FormControl>
                         <FormLabel>First Name</FormLabel>
@@ -286,7 +283,7 @@ export function OrderLookup(){
     }
 
     const OrderDisplay = () => {
-        const {isLoading, isError, error, data, isSuccess} = useQuery('orderlookup', () => axios.get(`http://127.0.0.1:8000/api/orders/${orderRef.current.value}/`).then((r) => r.data))
+        const {isLoading, isError, error, data, isSuccess} = useQuery('orderlookup', () => axios.get(`https://mojos.herokuapp.com/api/orders/${orderRef.current.value}/`).then((r) => r.data))
         return(<SuspenseElement isLoading={isLoading} isError={isError} isSuccess={isSuccess} error={error} data={data}>
             <OrderCard item={data}/>
         </SuspenseElement> )

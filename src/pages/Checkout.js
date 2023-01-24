@@ -12,7 +12,7 @@ import {
     FormLabel,
     Heading, Image,
     Input, List, ListItem,
-    Select, Spacer, Stack, Text,
+    Select, Spacer, Spinner, Stack, Text,
 } from "@chakra-ui/react";
 import React, {useEffect, useRef, useState} from "react";
 import states from "../res/states.json";
@@ -71,7 +71,7 @@ export function Shipping(){
     }, [cart])
 
     const ShippingCost = () => {
-        const {isLoading, isError, isSuccess, error, data} = useQuery('shippingcost', () => axios.post('http://127.0.0.1:8000/api/users/shipping/', {address:checkout_address, items: printfulItems()} ).then((r) => r.data))
+        const {isLoading, isError, isSuccess, error, data} = useQuery('shippingcost', () => axios.post('https://mojos.herokuapp.com/api/users/shipping/', {address:checkout_address, items: printfulItems()} ).then((r) => r.data))
 
         const ShippingCostDisplay = ({data}) => {
             const shipping = JSON.parse(data[0])
@@ -89,7 +89,7 @@ export function Shipping(){
     }
 
     const ShippingTax = () => {
-        const {isLoading, isError, error, data, isSuccess} = useQuery('shippingtax', () => axios.post('http://127.0.0.1:8000/api/address/addresstax/', {address: checkout_address} ).then((r) => r.data))
+        const {isLoading, isError, error, data, isSuccess} = useQuery('shippingtax', () => axios.post('https://mojos.herokuapp.com/api/address/addresstax/', {address: checkout_address} ).then((r) => r.data))
         const ShippingTaxDisplay = ({data}) => {
             const shipping =  JSON.parse(data[0])
             useEffect(() => {
@@ -125,7 +125,7 @@ export function Shipping(){
 
 export function Cart(){
     const {cart, quantity} = useCartContext()
-    console.log(cart)
+
     return(
         <Card>
             <CardHeader><Heading>Cart</Heading></CardHeader>
@@ -143,7 +143,7 @@ export function Cart(){
                                         <Text>{item.item.title}</Text>
                                     </Box>
                                     <Box w='30%'>
-                                        <Image src={`http://127.0.0.1:8000${item.item.image}`} boxSize={'4.50em'}/>
+                                        <Image src={`https://res.cloudinary.com/hsdvgholu/${item.item.image}`} boxSize={'4.50em'}/>
                                     </Box>
                                     <Box w='30%'>
                                         <Text>${item.value.price * item.value.quantity}</Text>
@@ -446,10 +446,12 @@ export function CardForm({clientSecret, billing_address, checkout_address, user_
     const [error, setError] = useState(null)
     const navigate = useNavigate()
     const {errorHandle} = useErrorContext()
+    const [loading, setLoading] = useState(false)
     const handleSubmit = async (event) => {
         // We don't want to let default form submission happen here,
         // which would refresh the page.
         event.preventDefault();
+        setLoading(true)
 
         if (!stripe || !elements) {
             // Stripe.js has not yet loaded.
@@ -477,16 +479,17 @@ export function CardForm({clientSecret, billing_address, checkout_address, user_
             setError(result.error.message)
         } else {
             if (result.paymentIntent.status === 'succeeded') {
-                axios.post('http://127.0.0.1:8000/api/orders/ordercreate/', {checkout_address: checkout_address, user_name: user_name.first_name + " " + user_name.last_name, authuser: user !== null ? user.id : null, items: cart, email: user_name.email, shipping_cost: shipping_cost.rate, shipping_tax: Math.round(parseFloat(shipping_tax.rate) * parseInt(totalCart())), total: (parseInt(totalCart()) + parseInt(shipping_cost.rate)) + Math.round((parseFloat(shipping_tax.rate) * parseInt(totalCart())))}).then((r) => r).finally(() => navigate("/thankyou")).catch((error) => errorHandle(error))
+                axios.post('https://mojos.herokuapp.com/api/orders/ordercreate/', {checkout_address: checkout_address, user_name: user_name.first_name + " " + user_name.last_name, authuser: user !== null ? user.id : null, items: cart, email: user_name.email, shipping_cost: shipping_cost.rate, shipping_name: shipping_cost.name, shipping_tax: Math.round(parseFloat(shipping_tax.rate) * parseInt(totalCart())), total: (parseInt(totalCart()) + parseInt(shipping_cost.rate)) + Math.round((parseFloat(shipping_tax.rate) * parseInt(totalCart())))}).then((r) => r).finally(() => navigate("/thankyou")).catch((error) => errorHandle(error))
             }
         }
     };
 
     return(
         <form onSubmit={(e) => handleSubmit(e)}>
+            {loading && <Spinner style={{position: 'absolute', top: "50%", left: '50%'}}/>}
             <Stack spacing={2}>
                 <CardElement/>
-                <Button type='submit' colorScheme='yellow'>Pay</Button>
+                {!loading ? <Button type='submit' colorScheme='yellow'>Pay</Button>:<Button type='submit' colorScheme='yellow' disabled>Pay</Button>}
             </Stack>
             {error && <Text colorScheme='red'>{error}</Text>}
         </form>

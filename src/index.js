@@ -13,6 +13,7 @@ import {Provider} from "react-redux";
 import store from "./store";
 import {ErrorContextProvider} from "./context/ErrorContext";
 import { HelmetProvider } from 'react-helmet-async';
+import {SuspenseContextProvider} from "./context/SuspenseContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const queryClient = new QueryClient()
@@ -20,21 +21,23 @@ root.render(
   <React.StrictMode>
       <ChakraProvider>
           <ErrorContextProvider>
-              <AuthContextProvider>
-                  <CartContextProvider>
-                      <StripeContextProvider>
-                          <Router>
-                              <QueryClientProvider client={queryClient}>
-                                  <Provider store={store}>
-                                      <HelmetProvider>
-                                        <App />
-                                      </HelmetProvider>
-                                  </Provider>
-                              </QueryClientProvider>
-                          </Router>
-                      </StripeContextProvider>
-                  </CartContextProvider>
-              </AuthContextProvider>
+              <SuspenseContextProvider>
+                  <AuthContextProvider>
+                      <CartContextProvider>
+                          <StripeContextProvider>
+                              <Router>
+                                  <QueryClientProvider client={queryClient}>
+                                      <Provider store={store}>
+                                          <HelmetProvider>
+                                            <App />
+                                          </HelmetProvider>
+                                      </Provider>
+                                  </QueryClientProvider>
+                              </Router>
+                          </StripeContextProvider>
+                      </CartContextProvider>
+                  </AuthContextProvider>
+              </SuspenseContextProvider>
           </ErrorContextProvider>
       </ChakraProvider>
   </React.StrictMode>

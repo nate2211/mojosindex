@@ -3,12 +3,14 @@ import {useNavigate} from "react-router-dom";
 import {Button, Text, useDisclosure, Drawer, DrawerOverlay, DrawerContent, DrawerBody, DrawerCloseButton, DrawerHeader, List, ListItem, Accordion, AccordionPanel, AccordionButton, AccordionItem, AccordionIcon, Box} from "@chakra-ui/react";
 import {useAuthContext} from "../context/AuthContext";
 import {AiOutlineMenu} from "react-icons/ai";
+import {useErrorContext} from "../context/ErrorContext";
 
 export function SideNav() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
     const {user} = useAuthContext()
     const navigate = useNavigate()
+
     const SideLink = ({to, children}) => {
         function onClick() {
             onClose()
@@ -23,6 +25,7 @@ export function SideNav() {
         <>
             <Button ref={btnRef} colorScheme='white' onClick={onOpen}>
                 <AiOutlineMenu size={55}/>
+
             </Button>
             <Drawer
                 isOpen={isOpen}

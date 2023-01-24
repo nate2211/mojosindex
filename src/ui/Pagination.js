@@ -65,7 +65,7 @@ export function WishListItems({wishlist}){
                 return(<Box key={i}>
                     <HStack>
                         <Heading>{item.name}</Heading>
-                        <Image src={`http://127.0.0.1:8000${item.image}`} boxSize={['4em', '5em', '10em']} onClick={() => navigate(`/product/${item.product}&${item.index}`)}/>
+                        <Image src={`https://res.cloudinary.com/hsdvgholu/${item.image}`} boxSize={['4em', '5em', '10em']} onClick={() => navigate(`/product/${item.product}&${item.index}`)}/>
                         <Heading>${item.price}</Heading>
                         <Button colorScheme='red' onClick={() => removewishlist(item)}>X</Button>
                     </HStack>
@@ -103,7 +103,7 @@ export function ReviewItems({reviews, account = false}){
             <CardHeader p='1'>
                 <HStack>
                     <SelectedStarRating selectedStars={review.rating}/>
-                    <Image boxSize={['3.25em']} src={`http://127.0.0.1:8000${review.variant.image}`}/>
+                    <Image boxSize={['3.25em']} src={`https://res.cloudinary.com/hsdvgholu/${review.variant.image}`}/>
                     <Text textOverflow='ellipsis'>{review.variant.name}</Text>
                 </HStack>
                 <Divider/>
@@ -138,7 +138,7 @@ export function ReviewItems({reviews, account = false}){
             <CardHeader p='1'>
                 <HStack>
                     {show ? <StarRating current={stars} setValue={setStars}/> :<SelectedStarRating selectedStars={review.rating}/>}
-                    <Image boxSize={['3.25em']} src={`http://127.0.0.1:8000${review.variant.image}`}/>
+                    <Image boxSize={['3.25em']} src={`https://res.cloudinary.com/hsdvgholu/${review.variant.image}`}/>
                     <Text textOverflow='ellipsis'>{review.variant.name}</Text>
                 </HStack>
                 <Divider/>

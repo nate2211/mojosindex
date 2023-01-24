@@ -1,5 +1,5 @@
 import {Component} from "react";
-import {Box, Heading, Text} from "@chakra-ui/react";
+import {Box, Button, Flex, Heading, Spacer, Text} from "@chakra-ui/react";
 import React, {createContext, useContext, useState} from "react";
 import {useRef, useEffect} from "react";
 
@@ -21,8 +21,11 @@ export function ErrorContextProvider({children}){
     const [message, setMessage] = useState(null);
     const [mounted, setMounted] = useState(false)
 
+
+
+
     function errorHandle(e, m){
-        if(e !== String) {
+        if(typeof e !== "string") {
             setError(e.message)
         }else{
             setError(e)
@@ -32,17 +35,26 @@ export function ErrorContextProvider({children}){
         }
     }
 
-
     const DisplayError = () => {
-        const mounted = useMountedRef()
-        useEffect(() => {
-            setMounted(mounted.current)
-        }, [])
+
+        const DisplayErrorText = () => {
+            const mounted = useMountedRef()
+            useEffect(() => {
+                setMounted(mounted.current)
+            }, [])
+            return(
+                <>
+                    {error !== null && <Text fontSize='xl'> Error: {error}</Text>}
+                    {message !== null && <Text fontSize='s' >{message}</Text>}
+                    {(error !== null || message !== null) && <Spacer/>}
+                    {(error !== null || message !== null) && <Button onClick={() => {setError(null);setMessage(null)}} >X</Button>}
+                </>
+            )
+        }
         return(
-            <>
-                {error !== null && <Text color='red'>Error: {error}</Text>}
-                {message !== null && <Text color='red' fontSize='xs'>{message}</Text>}
-            </>
+            <Flex backgroundColor='red'>
+                {(error !== null || message !== null) && <DisplayErrorText/>}
+            </Flex>
         )
     }
     return(<ErrorContext.Provider value={{errorHandle, DisplayError}}>

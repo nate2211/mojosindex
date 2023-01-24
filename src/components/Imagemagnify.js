@@ -1,12 +1,22 @@
 import React, {Children, useState} from "react";
-import {Container} from "@chakra-ui/react";
+import {
+    Button,
+    Container, FormControl, FormLabel, Input,
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent, ModalFooter,
+    ModalHeader,
+    ModalOverlay, Stack,
+    Text, useDisclosure
+} from "@chakra-ui/react";
 
 
 export function ImageMagnifier({src, magnifierHeight = 150, magnifieWidth = 150, zoomLevel = 1.5, children}) {
     const [[x, y], setXY] = useState([0, 0]);
     const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
     const [showMagnifier, setShowMagnifier] = useState(false);
-
+    const { isOpen, onOpen, onClose } = useDisclosure()
     function onMouseEnter(e){
         const elem = e.currentTarget;
         const { width, height } = elem.getBoundingClientRect();
@@ -33,7 +43,8 @@ export function ImageMagnifier({src, magnifierHeight = 150, magnifieWidth = 150,
             {React.cloneElement(children, {
                 onMouseEnter: onMouseEnter,
                 onMouseMove: onMouseMove,
-                onMouseLeave: onMouseLeave
+                onMouseLeave: onMouseLeave,
+                onClick: onOpen
 
             })}
             <Container
@@ -59,12 +70,23 @@ export function ImageMagnifier({src, magnifierHeight = 150, magnifieWidth = 150,
                     backgroundSize: `${imgWidth * zoomLevel}px ${
                         imgHeight * zoomLevel
                     }px`,
-
+                    zIndex: `${isOpen ? "10": "1"}`,
                     //calculate position of zoomed image.
                     backgroundPositionX: `${-x * zoomLevel + magnifieWidth / 2}px`,
                     backgroundPositionY: `${-y * zoomLevel + magnifierHeight / 2}px`
                 }}
             />
+            <Modal isOpen={isOpen} onClose={onClose} size={['xs', 'sm', 'md', 'lg', 'xl']}>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalCloseButton />
+                    <ModalBody>
+                        <ImageMagnifier>
+                            {React.cloneElement(children, {w: "100%", h: "100%", fit: "fill"})}
+                        </ImageMagnifier>
+                    </ModalBody>
+                </ModalContent>
+            </Modal>
         </>
     );
 }

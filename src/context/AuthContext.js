@@ -1,6 +1,7 @@
 import React, {createContext, useContext, useEffect, useState} from "react";
 import axios from "axios";
 import {useErrorContext} from "./ErrorContext";
+import {useSuspenseContext} from "./SuspenseContext";
 
 const AuthContext = createContext()
 
@@ -8,47 +9,59 @@ export function AuthContextProvider({children}) {
 
     const [user, setUser] = useState(JSON.parse(window.localStorage.getItem('user')) || null)
     const {errorHandle} = useErrorContext()
+    const {setLoading} = useSuspenseContext()
     useEffect(() => {
         window.localStorage.setItem('user', JSON.stringify(user))
     }, [user])
 
-    function login(username, password){
-        axios.post('http://127.0.0.1:8000/api/users/login/', {username: username, password: password}).then((r) => setUser(r.data)).catch((e) => errorHandle(e, "Username or Password is incorrect"))
+    async function login(username, password){
+        setLoading(true)
+        await axios.post('https://mojos.herokuapp.com/api/users/login/', {username: username, password: password}).then((r) => setUser(r.data)).then(() => setLoading(false)).catch((e) => errorHandle(e, "Username or Password is incorrect"))
     }
-    function logout(){
-        axios.post('http://127.0.0.1:8000/api/users/logout/', {user: user.id}).then(() => setUser(null)).catch((e) => errorHandle(e))
+    async function logout(){
+        setLoading(true)
+        await axios.post('https://mojos.herokuapp.com/api/users/logout/', {user: user.id}).then(() => setUser(null)).then(() => setLoading(false)).catch((e) => errorHandle(e))
     }
-    function signup(data){
-        axios.post('http://127.0.0.1:8000/api/users/signup/', {data: data}).catch((e) => errorHandle(e))
+    async function signup(data){
+        setLoading(true)
+        await axios.post('https://mojos.herokuapp.com/api/users/signup/', {data: data}).then((r) => setUser(r.data)).then(() => setLoading(false)).catch((e) => errorHandle(e))
     }
-    function changePassword(password, id){
-        axios.post('http://127.0.0.1:8000/api/users/changepassword/', {password: password, id: id}).catch((e) => errorHandle(e))
+    async function changePassword(password, id){
+        setLoading(true)
+        await axios.post('https://mojos.herokuapp.com/api/users/changepassword/', {password: password, id: id}).then(() => setLoading(false)).catch((e) => errorHandle(e))
     }
-    function forgetPassword(email){
-        axios.post('http://127.0.0.1:8000/api/users/forgetpassword/', {email: email}).catch((e) => errorHandle(e))
+    async function forgetPassword(email){
+        setLoading(true)
+        await axios.post('https://mojos.herokuapp.com/api/users/forgetpassword/', {email: email}).then(() => setLoading(false)).catch((e) => errorHandle(e))
     }
-    function updateAddress(address, data){
-        axios.post('http://127.0.0.1:8000/api/users/updateaddress/', {address: address, dict: data}).then(() => refreshAccount()).catch((e) => errorHandle(e))
+    async function updateAddress(address, data){
+        setLoading(true)
+        await axios.post('https://mojos.herokuapp.com/api/users/updateaddress/', {address: address, dict: data}).then(() => refreshAccount()).then(() => setLoading(false)).catch((e) => errorHandle(e))
     }
-    function refreshAccount(){
-        axios.post('http://127.0.0.1:8000/api/users/refresh/', {user: user.id}).then((r) => setUser(r.data)).catch((e) => errorHandle(e))
+    async function refreshAccount(){
+        setLoading(true)
+        await axios.post('https://mojos.herokuapp.com/api/users/refresh/', {user: user.id}).then((r) => setUser(r.data)).then(() => setLoading(false)).catch((e) => errorHandle(e))
     }
-    function updateAccount(data){
-        axios.post('http://127.0.0.1:8000/api/users/accountupdate/', {user: user.id, data: data}).then((r) => setUser(r.data)).catch((e) => errorHandle(e))
+    async function updateAccount(data){
+        setLoading(true)
+        await axios.post('https://mojos.herokuapp.com/api/users/accountupdate/', {user: user.id, data: data}).then((r) => setUser(r.data)).then(() => setLoading(false)).catch((e) => errorHandle(e))
     }
-    function deleteUser(password) {
-        axios.post('http://127.0.0.1:8000/api/users/deleteuser/', {
+    async function deleteUser(password) {
+        setLoading(true)
+        await axios.post('https://mojos.herokuapp.com/api/users/deleteuser/', {
             id: user.id,
             uid: user.user.id,
             password: password
-        }).catch((e) => errorHandle(e))
+        }).then(() => setLoading(false)).catch((e) => errorHandle(e))
     }
-    function removeAddress(id){
-        axios.post('http://127.0.0.1:8000/api/users/removeaddress/', { address: id}).then(()=> refreshAccount()).catch((e) => errorHandle(e))
+    async function removeAddress(id){
+        setLoading(true)
+        await axios.post('https://mojos.herokuapp.com/api/users/removeaddress/', { address: id}).then(()=> refreshAccount()).then(() => setLoading(false)).catch((e) => errorHandle(e))
     }
-    function addAddress(data){
+    async function addAddress(data){
+        setLoading(true)
         if(user.address.length < 4) {
-            axios.post('http://127.0.0.1:8000/api/users/addaddress/', {
+            await axios.post('https://mojos.herokuapp.com/api/users/addaddress/', {
                 user: user.id,
                 address: data
             }).then(() => refreshAccount()).catch((e) => errorHandle(e))
@@ -56,8 +69,9 @@ export function AuthContextProvider({children}) {
             errorHandle("Can not have more then 3 Addresses")
         }
     }
-    function contact(message, email){
-        axios.post('http://127.0.0.1:8000/api/users/contact/', {message: message, email: email}).catch((e) => errorHandle(e))
+    async function contact(message, email){
+        setLoading(true)
+        await axios.post('https://mojos.herokuapp.com/api/users/contact/', {message: message, email: email}).then(() => setLoading(false)).catch((e) => errorHandle(e))
     }
     function checkAddress(address){
         let temp = user.address
@@ -77,20 +91,25 @@ export function AuthContextProvider({children}) {
     }
 
 
-    function addwishlist(variant){
-        axios.post('http://127.0.0.1:8000/api/users/addwishlist/',{authuser: user.id, id:variant.id}).finally(()=> refreshAccount()).catch((e) => errorHandle(e))
+    async function addwishlist(variant){
+        setLoading(true)
+        await axios.post('https://mojos.herokuapp.com/api/users/addwishlist/',{authuser: user.id, id:variant.id}).then(()=> refreshAccount()).then(() => setLoading(false)).catch((e) => errorHandle(e))
     }
-    function removewishlist(variant){
-        axios.post('http://127.0.0.1:8000/api/users/removewishlist/',{authuser: user.id, id:variant.id}).finally(()=> refreshAccount()).catch((e) => errorHandle(e))
+    async function removewishlist(variant){
+        setLoading(true)
+        await axios.post('https://mojos.herokuapp.com/api/users/removewishlist/',{authuser: user.id, id:variant.id}).then(()=> refreshAccount()).then(() => setLoading(false)).catch((e) => errorHandle(e))
     }
-    function createreview(variant, review, rating){
-        axios.post('http://127.0.0.1:8000/api/users/createreview/', {authuser: user.id, variant: variant.id, product: variant.product, review: review, rating: rating}).finally(()=> refreshAccount()).catch((e) => errorHandle(e))
+    async function createreview(variant, review, rating){
+        setLoading(true)
+        await axios.post('https://mojos.herokuapp.com/api/users/createreview/', {authuser: user.id, variant: variant.id, product: variant.product, review: review, rating: rating}).then(()=> refreshAccount()).then(() => setLoading(false)).catch((e) => errorHandle(e))
     }
-    function deletereview(variant){
-        axios.post('http://127.0.0.1:8000/api/reviews/deletereview/', {authuser: user.id, variant: variant.id, product: variant.product}).finally(()=> refreshAccount()).catch((e) => errorHandle(e))
+    async function deletereview(variant){
+        setLoading(true)
+        await axios.post('https://mojos.herokuapp.com/api/reviews/deletereview/', {authuser: user.id, variant: variant.id, product: variant.product}).then(()=> refreshAccount()).then(() => setLoading(false)).catch((e) => errorHandle(e))
     }
-    function editreview(review, rating, variant){
-        axios.post('http://127.0.0.1:8000/api/reviews/editreview/', {review: review, rating: rating, authuser: user.id, variant: variant.id, product: variant.product}).finally(() => refreshAccount()).catch((e) => errorHandle(e))
+    async function editreview(review, rating, variant){
+        setLoading(true)
+        await axios.post('https://mojos.herokuapp.com/api/reviews/editreview/', {review: review, rating: rating, authuser: user.id, variant: variant.id, product: variant.product}).then(() => refreshAccount()).then(() => setLoading(false)).catch((e) => errorHandle(e))
     }
 
 

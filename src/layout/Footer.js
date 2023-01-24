@@ -18,10 +18,10 @@ export function Footer(){
             </Center>
             <Center w='100%' h={"5vh"}>
                 <HStack>
-                    <Text textAlign='center' fontSize={['.60em', '1em']} as={Link} to={"/aboutus"}>About Us</Text>
-                    <Text textAlign='center' fontSize={['.60em', '1em']} as={Link} to={"/contact"}>Contact</Text>
-                    <Text textAlign='center' fontSize={['.60em', '1em']} as={Link} to={"/faq"}>FAQ</Text>
-                    <Text textAlign='center' fontSize={['.60em', '1em']} as={Link} to={"/returnfaq"}>Returns</Text>
+                    <Text textAlign='center' fontSize={['.50em', '1em']} as={Link} to={"/aboutus"}>About Us</Text>
+                    <Text textAlign='center' fontSize={['.50em', '1em']} as={Link} to={"/contact"}>Contact</Text>
+                    <Text textAlign='center' fontSize={['.50em', '1em']} as={Link} to={"/faq"}>FAQ</Text>
+                    <Text textAlign='center' fontSize={['.50em', '1em']} as={Link} to={"/returnfaq"}>Returns</Text>
                 </HStack>
             </Center>
             <Spacer />

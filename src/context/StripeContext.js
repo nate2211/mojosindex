@@ -14,7 +14,7 @@ export function StripeContextProvider({children}){
 
 
     function GetSecret(total){
-        axios.post("http://127.0.0.1:8000/api/users/payment/", {total:total} )
+        axios.post("https://mojos.herokuapp.com/api/users/payment/", {total:total} )
             .then((res) => res.data)
             .then((data) => setClientSecret(data.clientSecret));
     }

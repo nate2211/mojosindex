@@ -12,7 +12,7 @@ export function Shop(){
     const ShopPage = () => {
 
         const {isLoading, isError, isSuccess, error, data} = useQuery('shop', () =>
-            axios.get(id !== undefined ?`http://127.0.0.1:8000/api/variants/?site=Mojos%20Index${id}`:`http://127.0.0.1:8000/api/variants/?site=Mojos%20Index`).then((res) => res.data))
+            axios.get(id !== undefined ?`https://mojos.herokuapp.com/api/variants/?site=Mojos%20Index${id}`:`https://mojos.herokuapp.com/api/variants/?site=Mojos%20Index`).then((res) => res.data))
 
         return(
             <SuspenseElement isLoading={isLoading} isError={isError} isSuccess={isSuccess} error={error} data={data}>
@@ -42,7 +42,7 @@ const ShopElement = ({data}) => {
                         <Card>
                             <CardHeader><Heading>{variant.name}</Heading></CardHeader>
                             <CardBody>
-                                <Image onClick={() => navigate(`/product/${variant.product}&${variant.index}`)} src={`http://127.0.0.1:8000${variant.image}`}  boxSize={['xs', 'sm', 'md', 'lg']}/>
+                                <Image onClick={() => navigate(`/product/${variant.product}&${variant.index}`)} src={`https://res.cloudinary.com/hsdvgholu/${variant.image}`}  boxSize={['xs', 'sm', 'md', 'lg']}/>
                             </CardBody>
                         </Card>
                     </WrapItem>
