@@ -92,13 +92,13 @@ export const SelectedVariantList = ({product, vid}) => {
     return(
         <>
             <ImageMagnifier>
-                <Image src={`https://res.cloudinary.com/hsdvgholu/${variants[index].image}`} boxSize={['18em']} m='auto'/>
+                <Image src={`https://res.cloudinary.com/hsdvgholu/${variants[index].image}`} boxSize={['18em']} m='auto' alt={`${variants[index].name}`}/>
             </ImageMagnifier>
             <Wrap justify='center'>
                 {[].concat(variants.slice(0,index), variants.slice(index + 1)).map((variant, i) => {
                     return(
                         <WrapItem key={i}>
-                            <Image src={`https://res.cloudinary.com/hsdvgholu/${variant.image}`} boxSize={['5.50em', '7.50em']} onClick={() => setIndex(variant.index)}/>
+                            <Image src={`https://res.cloudinary.com/hsdvgholu/${variant.image}`} boxSize={['5.50em', '7.50em']} onClick={() => setIndex(variant.index)} alt={`${variants.name}`}/>
                         </WrapItem>)
                 })}
             </Wrap>
@@ -215,7 +215,7 @@ const ReviewPanel = ({product, index}) => {
             <ReviewModal variants={variants} index={index}/>
             <Flex alignItems='center' justifyContent='space-evenly' w='15em'>
                 <Box>
-                    <Image src={`https://res.cloudinary.com/hsdvgholu/${variants[index].image}`} boxSize={'4.50em'}/>
+                    <Image src={`https://res.cloudinary.com/hsdvgholu/${variants[index].image}`} boxSize={'4.50em'} alt={`${variants[index].name}`}/>
                 </Box>
                 <Box>
                     <BarReview rating={variants[index].review_average}/>
