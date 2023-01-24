@@ -4,8 +4,10 @@ import axp_logo from "../res/axp_logo.png";
 import discover_logo from "../res/discover_logo.jpg";
 import visa_logo from "../res/visa_logo.png";
 import mc_logo from "../res/mc_logo.png";
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
+import {BsInstagram} from "react-icons/bs";
 export function Footer(){
+    const navigate = useNavigate()
     return(
         <Flex h="10vh" bg="gray.200" flexDirection="column" position='fixed' bottom='0' w='100%'>
             <Center w='100%' h={"5vh"}>
@@ -29,6 +31,8 @@ export function Footer(){
                 <Flex flexDirection="column" w="100%" alignItems="flex-end">
                     <Image src={stripe_logo} boxSize='25px' alignSelf="self-end"/>
                     <HStack>
+                        <BsInstagram onClick={() => window.open("https://www.instagram.com/indexmojos/?hl=en")}/>
+
                         <Image src={axp_logo} boxSize='12px'/>
 
                         <Image src={discover_logo} boxSize='12px'/>
