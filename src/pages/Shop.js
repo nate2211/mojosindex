@@ -19,8 +19,8 @@ import axios from "axios";
 import {SuspenseElement} from "../ui/Suspense";
 import {Helmet} from "react-helmet-async";
 import {BiSearchAlt} from "react-icons/bi";
-import {useRef, useState} from "react";
-import React from "@types/react";
+import React, {useRef, useState} from "react";
+;
 
 export function Shop(){
     const {id} = useParams()

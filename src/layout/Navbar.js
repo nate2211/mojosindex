@@ -8,7 +8,7 @@ export function NavBar(){
 
     return(
         <>
-            <Grid h='10vh' templateColumns='repeat(5, 1fr)' gap={0}>
+            <Grid h='10vh' templateColumns='repeat(5, 1fr)' gap={0} zIndex={4}>
                 <GridItem colSpan={2} h='100%' bg='gray.900'>
                     <Center h='100%'>
                         <SideNav/>
