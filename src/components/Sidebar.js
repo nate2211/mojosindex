@@ -111,24 +111,15 @@ export function SideBar() {
                                             </ListItem>
                                             <ListItem>
                                                 <FilterCheckBox filter={'&type=Astrology'}>Astrology</FilterCheckBox>
-                                            </ListItem>
-                                            <ListItem>
-                                                <FilterCheckBox filter={'&type=Stainless%20Glass'}>Stainless Glass</FilterCheckBox>
-                                            </ListItem>
+                                            </ListItem>>
                                             <ListItem>
                                                 <FilterCheckBox filter={'&type=Botanical'}>Botanical</FilterCheckBox>
                                             </ListItem>
                                             <ListItem>
-                                                <FilterCheckBox filter={'&type=Shell'}>Shell</FilterCheckBox>
+                                                <FilterCheckBox filter={'&type=Nautical'}>Nautical</FilterCheckBox>
                                             </ListItem>
                                             <ListItem>
                                                 <FilterCheckBox filter={'&type=Space'}>Space</FilterCheckBox>
-                                            </ListItem>
-                                            <ListItem>
-                                                <FilterCheckBox filter={'&type=Mandala'}>Mandala</FilterCheckBox>
-                                            </ListItem>
-                                            <ListItem>
-                                                <FilterCheckBox filter={'&type=Pop%20Art'}>Pop Art</FilterCheckBox>
                                             </ListItem>
                                         </List>
                                     </AccordionPanel>
@@ -153,7 +144,7 @@ export function SideBar() {
                                                 <FilterCheckBox filter={'&subtype=Illustrations'}>Illustrations</FilterCheckBox>
                                             </ListItem>
                                             <ListItem>
-                                                <FilterCheckBox filter={'&subtype=Mosaic'}>Mosaic</FilterCheckBox>
+                                                <FilterCheckBox filter={'&type=Pop%20Art'}>Pop Art</FilterCheckBox>
                                             </ListItem>
                                             <ListItem>
                                                 <FilterCheckBox filter={'&subtype=Abstract'}>Abstract</FilterCheckBox>

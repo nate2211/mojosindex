@@ -57,8 +57,18 @@ export function ErrorContextProvider({children}){
             </Flex>
         )
     }
+
+    const HeadingError = () => {
+        return(
+            <>
+                <Heading backgroundColor='red' w='100%'>{error}</Heading>
+                <Button onClick={() => {setError(null);setMessage(null)}} >X</Button>
+            </>
+        )
+    }
+
     return(<ErrorContext.Provider value={{errorHandle, DisplayError}}>
-        {error !== null && mounted === false && <Heading backgroundColor='red' w='100%'>{error}</Heading>}
+        {error !== null && mounted === false && <HeadingError/>}
         {children}
     </ErrorContext.Provider>)
 }
