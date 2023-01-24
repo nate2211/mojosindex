@@ -49,7 +49,7 @@ export function SideCart() {
                                                 <Text>{item.item.title}</Text>
                                             </Box>
                                             <Box w='30%'>
-                                                <Image src={`https://res.cloudinary.com/hsdvgholu/${item.item.image}`} boxSize={'4.50em'}/>
+                                                <Image src={`https://res.cloudinary.com/hsdvgholu/${item.item.image}`} boxSize={'4.50em'} alt={`Cart ${item.item.title}`}/>
                                             </Box>
                                             <Box w='21%'>
                                                 <Text>${item.value.price}</Text>

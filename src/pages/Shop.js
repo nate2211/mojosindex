@@ -1,10 +1,25 @@
 import {Link, useNavigate, useParams} from "react-router-dom";
 import {SideBar} from "../components/Sidebar";
-import {Box, Card, CardBody, CardHeader, Divider, Flex, Heading, Image, Wrap, WrapItem} from "@chakra-ui/react";
+import {
+    Box,
+    Card,
+    CardBody,
+    CardHeader,
+    Divider,
+    Flex,
+    Heading,
+    Image,
+    Input,
+    InputGroup, InputLeftElement, InputRightElement,
+    Wrap,
+    WrapItem
+} from "@chakra-ui/react";
 import {useQuery} from "react-query";
 import axios from "axios";
 import {SuspenseElement} from "../ui/Suspense";
 import {Helmet} from "react-helmet-async";
+import {BiSearchAlt} from "react-icons/bi";
+import {useRef, useState} from "react";
 
 export function Shop(){
     const {id} = useParams()
@@ -26,6 +41,17 @@ export function Shop(){
 
 const ShopElement = ({data}) => {
     const navigate = useNavigate()
+    const [search, setSearch] = useState("")
+
+    function filter(){
+        if(search=== "") {
+            return data
+        }
+        else {
+            return data.filter((variant) => variant.name.includes(search))
+        }
+    }
+
     return(<Flex flexDirection="column">
         <Helmet>
             <title>Mojos Index Shop</title>
@@ -35,14 +61,23 @@ const ShopElement = ({data}) => {
             />
         </Helmet>
         <SideBar/>
+        <form>
+            <InputGroup>
+                <Input type='text' onChange={(e) => setSearch(e.target.value)}/>
+                <InputRightElement
+                    pointerEvents='none'
+                    children={<BiSearchAlt color='gray.300' />}
+                />
+            </InputGroup>
+        </form>
         <Wrap justify='center'>
-            {data.map((variant, i) => {
+            {filter(data).map((variant, i) => {
                 return(
                     <WrapItem key={i}>
                         <Card>
                             <CardHeader><Heading>{variant.name}</Heading></CardHeader>
                             <CardBody>
-                                <Image onClick={() => navigate(`/product/${variant.product}&${variant.index}`)} src={`https://res.cloudinary.com/hsdvgholu/${variant.image}`}  boxSize={['xs', 'sm', 'md', 'lg']}/>
+                                <Image onClick={() => navigate(`/product/${variant.product}&${variant.index}`)} src={`https://res.cloudinary.com/hsdvgholu/${variant.image}`}  boxSize={['xs', 'sm', 'md', 'lg']} alt={`${variant.name} ${variant.producttype}`}/>
                             </CardBody>
                         </Card>
                     </WrapItem>

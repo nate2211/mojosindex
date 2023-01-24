@@ -148,7 +148,7 @@ export function ReviewModal({variants, index}) {
                             <Stack spacing={2}>
                             <HStack>
                                 <StarRating setValue={setStars}/>
-                                <Image boxSize={['3.25em']} src={`https://res.cloudinary.com/hsdvgholu/${value.image}`}/>
+                                <Image boxSize={['3.25em']} src={`https://res.cloudinary.com/hsdvgholu/${value.image}`} alt={`Modal`}/>
                                 <FormControl isRequired>
                                 <Select onChange={(e) => setValue(JSON.parse(e.target.value))} value={JSON.stringify(value)}>
                                     {variants.map((item, i) => {

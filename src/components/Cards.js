@@ -23,7 +23,7 @@ export const ProductCard = ({product}) => {
     return(<Card  w='15.5rem' m='.25rem'  backgroundColor='whiteAlpha.900'>
         <CardHeader><Heading textOverflow='ellipsis' noOfLines={1} fontSize='xl'>{product.name}</Heading></CardHeader>
         <CardBody>
-            <Image src={`https://res.cloudinary.com/hsdvgholu/${product.image}`} boxSize={[ "12.5rem"]}  />
+            <Image src={`https://res.cloudinary.com/hsdvgholu/${product.image}`} boxSize={[ "12.5rem"]}  alt={`${product.name} ${product.producttype}`}/>
         </CardBody>
         <CardFooter>
             <Button onClick={() => navigate(`product/${product.product}&${product.index}`)}>View</Button>
@@ -121,7 +121,7 @@ export function OrderCard({item}){
                                 <Text>{item.item.title}</Text>
                             </Box>
                             <Box w='30%'>
-                                <Image src={`https://res.cloudinary.com/hsdvgholu/${item.item.image}`} boxSize={'4.50em'}/>
+                                <Image src={`https://res.cloudinary.com/hsdvgholu/${item.item.image}`} boxSize={'4.50em'} alt={`Order ${item.item.title} `}/>
                             </Box>
                             <Box w='30%'>
                                 <Text>${item.value.price * item.value.quantity}</Text>

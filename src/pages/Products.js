@@ -57,7 +57,7 @@ export const Recommended = ({item}) => {
                     return (
                             <Card m='2' key={i}>
                                 <CardHeader><Heading textOverflow={"ellipsis"}>{variant.name}</Heading></CardHeader>
-                                <CardBody><Image src={`https://mojos.herokuapp.com${variant.image}`} boxSize={[ "12.5rem"]}/></CardBody>
+                                <CardBody><Image src={`https://mojos.herokuapp.com${variant.image}`} boxSize={[ "12.5rem"]} alt={`${variant.name} ${variant.producttype}`}/></CardBody>
                                 <CardFooter><Button onClick={() => navigate(`/product/${variant.product}&${variant.index}`)}>View</Button></CardFooter>
                             </Card>
                     )
