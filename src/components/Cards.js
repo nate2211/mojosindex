@@ -35,6 +35,7 @@ export const ProductCard = ({product}) => {
 export const FullProductCard = ({data}) => {
     const [item, ] = useState(data[0])
     const {id} = useParams()
+
     return(
         <>
             <Helmet>

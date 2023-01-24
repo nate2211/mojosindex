@@ -41,6 +41,7 @@ export function Home(){
                     name="Mojos Index home"
                     content="Ecommerce site selling Home&Living goods. Canvas prints, posters, towels and pillows."
                 />
+                <link rel="canonical" href={window.location}/>
             </Helmet>
             <HomeFeatured/>
             <HomeShowCase/>
