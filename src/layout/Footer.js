@@ -7,7 +7,7 @@ import mc_logo from "../res/mc_logo.png";
 import {Link} from "react-router-dom"
 export function Footer(){
     return(
-        <Flex h="10vh" bg="gray.200" flexDirection="column">
+        <Flex h="10vh" bg="gray.200" flexDirection="column" position='fixed' bottom='0' w='100%'>
             <Center w='100%' h={"5vh"}>
                 <HStack>
                     <Text textAlign='center' fontSize={['.60em', '1em']} as={Link} to={"/shipping"}>Shipping Policy</Text>
