@@ -6,7 +6,7 @@ const StripeContext = createContext()
 
 
 
-const stripePromise = loadStripe("pk_test_51HpJs0GIZugFwQdSP0TdGSVDzNK6D2jsqdGIJFoUxWMVNtmTmPI5MfJeYFzN7MWSJRYYNNsUucfsB5f6e7JkqVW300051GRoM7");
+const stripePromise = loadStripe("pk_live_51HpJs0GIZugFwQdSSxRPRQanFO4M9UsQFX9WKVR7CU6HUxGqnAdUzE54vnkgFHZzbqlnam0xTWU8iQfF9Hp67C2R00ljCapYcX");
 
 export function StripeContextProvider({children}){
     const [clientSecret, setClientSecret] = useState(null);
