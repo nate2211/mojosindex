@@ -64,7 +64,7 @@ export function ErrorContextProvider({children}){
                 <Heading backgroundColor='red' w='100%'>{error}</Heading>
                 <Spacer/>
                 <Button onClick={() => {setError(null);setMessage(null)}} >X</Button>
-            <Flex/>
+            </Flex>
         )
     }
 
