@@ -67,7 +67,7 @@ export function ErrorContextProvider({children}){
         )
     }
 
-    return(<ErrorContext.Provider value={{errorHandle, DisplayError}}>
+    return(<ErrorContext.Provider value={{error, errorHandle, DisplayError}}>
         {error !== null && mounted === false && <HeadingError/>}
         {children}
     </ErrorContext.Provider>)

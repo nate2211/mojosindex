@@ -1,6 +1,7 @@
 
 import {Box, Spinner} from "@chakra-ui/react";
-import React, {createContext, useContext, useState} from "react";
+import React, {createContext, useContext, useEffect, useState} from "react";
+import {useErrorContext} from "./ErrorContext";
 
 
 
@@ -11,9 +12,13 @@ const SuspenseContext = createContext()
 
 export function SuspenseContextProvider({children}){
     const [loading, setLoading] = useState(false)
+    const {error} = useErrorContext()
 
-
-
+    useEffect(() => {
+        if(error !== null){
+            setLoading(false)
+        }
+    }, [error])
 
 
     const DisplaySuspense = () => {
