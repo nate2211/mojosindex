@@ -20,6 +20,7 @@ import {SuspenseElement} from "../ui/Suspense";
 import {Helmet} from "react-helmet-async";
 import {BiSearchAlt} from "react-icons/bi";
 import {useRef, useState} from "react";
+import React from "@types/react";
 
 export function Shop(){
     const {id} = useParams()
@@ -59,6 +60,7 @@ const ShopElement = ({data}) => {
                 name="Mojos Index Shop"
                 content="Ecommerce site selling Home&Living goods. Canvas prints (framed and unframed), posters (framed and unframed), towels, pillows, tote bags, puzzles.Our designs our curated and belong to various categories such as Astrology, Space, Crystals and more."
             />
+            <link rel="canonical" href={window.location}/>
         </Helmet>
         <SideBar/>
         <form>
