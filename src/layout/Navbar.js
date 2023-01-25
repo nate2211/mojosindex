@@ -2,7 +2,6 @@ import {Link} from "react-router-dom";
 import {Center, Grid, GridItem, Heading} from "@chakra-ui/react";
 import {SideNav} from "../components/Sidenav";
 import {SideCart} from "../components/Sidecart";
-import {useErrorContext} from "../context/ErrorContext";
 
 export function NavBar(){
 
