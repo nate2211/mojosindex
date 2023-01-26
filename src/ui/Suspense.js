@@ -1,7 +1,7 @@
 import React, {memo, useEffect} from "react";
 import {Alert, AlertIcon, Spinner} from "@chakra-ui/react";
 
-export const SuspenseElement = ({isLoading, isError, isSuccess, error,children, data}) => {
+export const SuspenseElement = ({isLoading, isError, isSuccess, error, children, data}) => {
     const childrenArray = React.Children.toArray(children)
 
     function DataIsEqual(prev,next){
