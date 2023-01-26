@@ -36,9 +36,9 @@ export function Home(){
     return(
         <Box>
             <Helmet>
-                <title>Mojos Index</title>
+                <title>Mojos Index Home</title>
                 <meta
-                    name="Mojos Index home"
+                    name="description"
                     content="Ecommerce site selling Home&Living goods. Canvas prints, posters, towels and pillows."
                 />
                 <link rel="canonical" href={window.location}/>

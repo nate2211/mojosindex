@@ -25,7 +25,7 @@ import {FullProductCard} from "../components/Cards";
 import {useAuthContext} from "../context/AuthContext";
 import {ReviewModal} from "../components/Modals";
 import {ImageMagnifier} from "../components/Imagemagnify";
-import {Helmet} from "react-helmet-async";
+
 
 
 

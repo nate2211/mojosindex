@@ -8,7 +8,7 @@ export function Privacy(){
             <Helmet>
                 <title>Privacy Policy</title>
                 <meta
-                    name="Mojos Index Privacy Policy"
+                    name="description"
                     content="Ecommerce site selling Home&Living goods. Canvas prints, posters, towels and pillows. The Privacy Policy of mojos index.
                     Last updated January 06, 2023. This privacy notice for Mojos Index ('Company,' 'we,' 'us,' or 'our'), describes how and why we might collect, store, use, and/or share ('process') your information when you use our services ('Services')"
                 />
@@ -405,7 +405,7 @@ export function TermsConditions(){
             <Helmet>
                 <title>Terms and Conditions</title>
                 <meta
-                    name="Mojos Index Terms and Conditions"
+                    name="description"
                     content="Ecommerce site selling Home&Living goods. Canvas prints, posters, towels and pillows. The Privacy Policy of mojos index.
                     Last updated January 06, 2023. This privacy notice for Mojos Index ('Company,' 'we,' 'us,' or 'our'), describes how and why we might collect, store, use, and/or share ('process') your information when you use our services ('Services')"
                 />
@@ -751,7 +751,7 @@ export function Return(){
         <Helmet>
             <title>Return Policy</title>
             <meta
-                name="Mojos Index Return Policy"
+                name="description"
                 content="Ecommerce site selling Home&Living goods. Canvas prints, posters, towels and pillows. The Privacy Policy of mojos index.
                     Last updated January 06, 2023. Thank you for your purchase. We hope you are happy with your purchase. However, if you are not completely satisfied with your purchase for any reason, you may return it to us for a full refund or an exchange."
             />
@@ -813,7 +813,7 @@ export function Shipping(){
         <Helmet>
             <title>Shipping Policy</title>
             <meta
-                name="Mojos Index Shipping Policy"
+                name="description"
                 content="Ecommerce site selling Home&Living goods. Canvas prints, posters, towels and pillows. The Shipping Policy of mojos index.
                     Last updated January 06, 2023. This Shipping & Delivery Policy is part of our Terms and Conditions ('Terms') and should be therefore read alongside our main Terms:"
             />

@@ -190,8 +190,8 @@ export function Account(){
             <Helmet>
                 <title>Mojos Index Account</title>
                 <meta
-                    name="Mojos Index account"
-                    content="Ecommerce site selling Home&Living goods. Canvas prints, posters, towels and pillows."
+                    name="description"
+                    content="Account Page for Mojos Index. Ecommerce site selling Home&Living goods. Canvas prints, posters, towels and pillows."
                 />
             </Helmet>
             <Accordion allowMultiple>
@@ -294,7 +294,7 @@ export function OrderLookup(){
         <Helmet>
             <title>Mojos Index Order Lookup</title>
             <meta
-                name="Mojos Index order lookup"
+                name="description"
                 content="Ecommerce site selling Home&Living goods. Canvas prints, posters, towels and pillows. Use your order id sent to you by email to lookup your order
                 if you do not have an account with us."
             />
@@ -363,7 +363,7 @@ export function ForgetPassword(){
             <Helmet>
                 <title>Mojos Index Forget Password</title>
                 <meta
-                    name="Mojos Index forget"
+                    name="description"
                     content="Ecommerce site selling Home&Living goods. Canvas prints, posters, towels and pillows."
                 />
             </Helmet>

@@ -41,7 +41,7 @@ export function Login(){
         <Helmet>
             <title>Mojos Index Login</title>
             <meta
-                name="Mojos Index login"
+                name="description"
                 content="Ecommerce site selling Home&Living goods. Canvas prints, posters, towels and pillows."
             />
         </Helmet>
@@ -111,7 +111,7 @@ export function Signup(){
             <Helmet>
                 <title>Mojos Index Signup</title>
                 <meta
-                    name="Mojos Index signup"
+                    name="description"
                     content="Ecommerce site selling Home&Living goods. Canvas prints, posters, towels and pillows."
                 />
             </Helmet>

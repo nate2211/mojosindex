@@ -41,7 +41,7 @@ export const FullProductCard = ({data}) => {
             <Helmet>
                 <title>Mojos Index Product Page</title>
                 <meta
-                    name="Mojos Index product page"
+                    name="description"
                     content={`${item.desc}`}
                 />
                 <link rel="canonical" href={window.location}/>

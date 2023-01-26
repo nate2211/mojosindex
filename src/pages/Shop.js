@@ -57,8 +57,8 @@ const ShopElement = ({data}) => {
         <Helmet>
             <title>Mojos Index Shop</title>
             <meta
-                name="Mojos Index Shop"
-                content="Ecommerce site selling Home&Living goods. Canvas prints (framed and unframed), posters (framed and unframed), towels, pillows, tote bags, puzzles.Our designs our curated and belong to various categories such as Astrology, Space, Crystals and more."
+                name="description"
+                content="Ecommerce site selling Home&Living goods. Canvas prints (framed and unframed), posters (framed and unframed), towels, pillows, tote bags, puzzles. Our designs our curated and belong to various categories such as Astrology, Space, Crystals and more."
             />
             <link rel="canonical" href={window.location}/>
         </Helmet>

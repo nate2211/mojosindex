@@ -31,7 +31,7 @@ export function Contact(){
             <Helmet>
                 <title>Mojos Index Contact</title>
                 <meta
-                    name="Mojos Index contact"
+                    name="description"
                     content="Ecommerce site selling Home&Living goods. Canvas prints, posters, towels and pillows. Contact us."
                 />
             </Helmet>
@@ -60,7 +60,7 @@ export function Faq(){
             <Helmet>
                 <title>Mojos Index Faq</title>
                 <meta
-                    name="Mojos Index faq"
+                    name="description"
                     content="Ecommerce site selling Home&Living goods. Canvas prints, posters, towels and pillows."
                 />
             </Helmet>
@@ -121,7 +121,7 @@ export function ReturnFaq(){
             <Helmet>
                 <title>Mojos Index Return Faq</title>
                 <meta
-                    name="Mojos Index return faq"
+                    name="description"
                     content="Ecommerce site selling Home&Living goods. Canvas prints, posters, towels and pillows."
                 />
             </Helmet>
@@ -168,7 +168,7 @@ export function ShippingFaq(){
             <Helmet>
                 <title>Mojos Index Shipping</title>
                 <meta
-                    name="Mojos Index shipping"
+                    name="description"
                     content="Ecommerce site selling Home&Living goods. Canvas prints, posters, towels and pillows."
                 />
             </Helmet>
@@ -222,7 +222,7 @@ export function AboutUs(){
             <Helmet>
                 <title>Mojos Index About</title>
                 <meta
-                    name="Mojos Index about us"
+                    name="description"
                     content="Ecommerce site selling Home&Living goods. Canvas prints, posters, towels and pillows."
                 />
             </Helmet>
@@ -249,7 +249,7 @@ export function ThankYou(){
             <Helmet>
                 <title>Mojos Index Thank You</title>
                 <meta
-                    name="Mojos Index thank you"
+                    name="description"
                     content="Ecommerce site selling Home&Living goods. Canvas prints, posters, towels and pillows."
                 />
             </Helmet>

@@ -44,7 +44,7 @@ export function Checkout(){
         <Helmet>
             <title>Mojos Index Checkout</title>
             <meta
-                name="Mojos Index checkout"
+                name="description"
                 content="Ecommerce site selling Home&Living goods. Canvas prints, posters, towels and pillows. Our secure checkout page sponsored by stripe."
             />
         </Helmet>
