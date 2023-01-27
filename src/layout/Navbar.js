@@ -14,7 +14,7 @@ export function NavBar(){
             </GridItem>
             <GridItem colSpan={1} h='100%'>
                 <Center h='100%'>
-                    <Link to={"/"}><Heading color='whitesmoke' textAlign='center'>Mojos Index</Heading></Link>
+                    <Link to={"/"}><Heading color='whitesmoke' textAlign='center' fontSize={['2xl', '3x1']}>Mojos Index</Heading></Link>
                 </Center>
             </GridItem>
             <GridItem colStart={4} colEnd={6} h='100%'>
