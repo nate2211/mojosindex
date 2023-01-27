@@ -84,7 +84,7 @@ const ShowCase = ({data}) => {
                 return(
                     <React.Fragment key={i}>
                         <Box bgImage={`url(https://res.cloudinary.com/hsdvgholu/${item.background})`} w='100%' backgroundSize='75%'>
-                            <Heading>{item.title}</Heading>
+                            <Heading backgroundColor='whiteAlpha.900'>{item.title}</Heading>
                             <Divider/>
                             <Wrap justify='center'>
                                 <WrapItem>
