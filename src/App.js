@@ -11,6 +11,7 @@ import {Shop} from "./pages/Shop";
 import {Privacy, Return, TermsConditions, Shipping} from "./pages/Policies";
 import {AboutUs, Contact, Faq, ReturnFaq, ShippingFaq, ThankYou} from "./pages/About";
 import {useEffect} from "react";
+import {Flex} from "@chakra-ui/react";
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
     }, [window.location.pathname]);
 
   return (
-    <>
+    <Flex flexDirection='column'>
       <NavBar/>
         <Body>
             <Routes>
@@ -49,7 +50,7 @@ function App() {
 
         </Body>
       <Footer/>
-    </>
+    </Flex>
   );
 }
 
