@@ -1,7 +1,7 @@
 import React from "react";
 import {
     WrapItem,
-    Wrap, Heading, Box, Divider, Flex, Center, Text, Button, Stack, Container
+    Wrap, Heading, Box, Divider, Flex, Center, Text, Button, Stack, Container, CardBody, Card, CardHeader, CardFooter
 } from "@chakra-ui/react";
 import axios from "axios";
 import {useQuery} from "react-query";
@@ -89,8 +89,15 @@ const ShowCase = ({data}) => {
                             <Wrap justify='center'>
                                 <WrapItem>
                                     <Stack m='auto'>
-                                        <Text w='25rem' as='b'>{item.desc}</Text>
-                                        <Button onClick={() => navigate(`shop/&type=${item.type}`)} w='25rem'>View All</Button>
+                                        <Card w='15.5rem' m='.25rem'  backgroundColor='whiteAlpha.900'>
+                                            <CardHeader><Heading>{item.type}</Heading></CardHeader>
+                                            <CardBody>
+                                                <Text w='25rem' as='b'>{item.desc}</Text>
+                                            </CardBody>
+                                            <CardFooter>
+                                                <Button onClick={() => navigate(`shop/&type=${item.type}`)} w='25rem'>View All</Button>
+                                            </CardFooter>
+                                        </Card>
                                     </Stack>
                                 </WrapItem>
 
