@@ -236,7 +236,7 @@ export function SideBar() {
                                                 <FilterCheckBox filter={'&producttype=Puzzle'}>Puzzle</FilterCheckBox>
                                             </ListItem>
                                             <ListItem>
-                                                <FilterCheckBox filter={'&producttype=Towel'}>Towel</FilterCheckBox>
+                                                <FilterCheckBox filter={'&producttype=Throw%20Blanket'}>Throw Blanket</FilterCheckBox>
                                             </ListItem>
                                         </List>
                                     </AccordionPanel>
@@ -278,7 +278,12 @@ export function SideBar() {
                                             <ListItem>
                                                 <FilterCheckBox filter={'&size=22x22in'}>22x22in</FilterCheckBox>
                                             </ListItem>
-
+                                            <ListItem>
+                                                <FilterCheckBox filter={'&size=50x60in'}>50x60in</FilterCheckBox>
+                                            </ListItem>
+                                            <ListItem>
+                                                <FilterCheckBox filter={'&size=60x80in'}>60x80in</FilterCheckBox>
+                                            </ListItem>
                                             <ListItem>
                                                 <FilterCheckBox filter={'&size=21x30cm'}>21x30cm</FilterCheckBox>
                                             </ListItem>
