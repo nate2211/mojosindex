@@ -172,5 +172,13 @@ export function Logout(){
         logout()
         navigate("/")
     }, [])
-    return(<></>)
+    return(<>
+        <Helmet>
+            <title>Mojos Index Logout</title>
+            <meta
+                name="description"
+                content="Ecommerce site selling Home&Living goods. Canvas prints, posters, towels and pillows."
+            />
+        </Helmet>
+    </>)
 }
