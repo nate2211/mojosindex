@@ -10,7 +10,7 @@ export function Body({children}){
 
         >
             {children}
-            <Box p='4' h='5rem'>
+            <Box p='4' h='5.5rem'>
             </Box>
         </Grid>
     )
