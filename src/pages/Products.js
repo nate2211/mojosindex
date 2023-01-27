@@ -55,9 +55,9 @@ export const Recommended = ({item}) => {
             <Flex justify='center' flexDirection='column' alignItems='center'>
                 {data.slice(0,6).map((variant, i) => {
                     return (
-                            <Card m='2' key={i}>
+                            <Card w='15.5rem' m='.25rem'  backgroundColor='whiteAlpha.900' key={i}>
                                 <CardHeader><Heading textOverflow={"ellipsis"}>{variant.name}</Heading></CardHeader>
-                                <CardBody><Image src={`https://mojos.herokuapp.com${variant.image}`} boxSize={[ "12.5rem"]} alt={`${variant.name} ${variant.producttype}`}/></CardBody>
+                                <CardBody><Image src={`https://res.cloudinary.com/hsdvgholu/${variant.image}`} boxSize={[ "12.5rem"]} alt={`${variant.name} ${variant.producttype}`}/></CardBody>
                                 <CardFooter><Button onClick={() => navigate(`/product/${variant.product}&${variant.index}`)}>View</Button></CardFooter>
                             </Card>
                     )
