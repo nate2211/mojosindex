@@ -9,21 +9,21 @@ import {BsInstagram} from "react-icons/bs";
 export function Footer(){
     const navigate = useNavigate()
     return(
-        <Flex h="10vh" bg="gray.200" flexDirection="column" position='fixed' bottom='0' w='100%'>
+        <Flex h="10vh" flexDirection="column" position='fixed' bottom='0' w='100%' bg='lightblue'>
             <Center w='100%' h={"5vh"}>
                 <HStack>
-                    <Text textAlign='center' fontSize={['.60em', '1em']} as={Link} to={"/shipping"}>Shipping Policy</Text>
-                    <Text textAlign='center' fontSize={['.60em', '1em']} as={Link} to={"/terms&conditions"}>Terms & Conditions</Text>
-                    <Text textAlign='center' fontSize={['.60em', '1em']} as={Link} to={"/returns"}>Return Policy</Text>
-                    <Text textAlign='center' fontSize={['.60em', '1em']} as={Link} to={"/privacy"}>Privacy Policy</Text>
+                    <Text textAlign='center' fontSize={['.60em', '1em']} as={Link} to={"/shipping"} color='whitesmoke'>Shipping Policy</Text>
+                    <Text textAlign='center' fontSize={['.60em', '1em']} as={Link} to={"/terms&conditions"} color='whitesmoke'>Terms & Conditions</Text>
+                    <Text textAlign='center' fontSize={['.60em', '1em']} as={Link} to={"/returns"} color='whitesmoke'>Return Policy</Text>
+                    <Text textAlign='center' fontSize={['.60em', '1em']} as={Link} to={"/privacy"} color='whitesmoke'>Privacy Policy</Text>
                 </HStack>
             </Center>
             <Center w='100%' h={"5vh"}>
                 <HStack>
-                    <Text textAlign='center' fontSize={['.50em', '1em']} as={Link} to={"/aboutus"}>About Us</Text>
-                    <Text textAlign='center' fontSize={['.50em', '1em']} as={Link} to={"/contact"}>Contact</Text>
-                    <Text textAlign='center' fontSize={['.50em', '1em']} as={Link} to={"/faq"}>FAQ</Text>
-                    <Text textAlign='center' fontSize={['.50em', '1em']} as={Link} to={"/returnfaq"}>Returns</Text>
+                    <Text textAlign='center' fontSize={['.50em', '1em']} as={Link} to={"/aboutus"} color='whitesmoke'>About Us</Text>
+                    <Text textAlign='center' fontSize={['.50em', '1em']} as={Link} to={"/contact"} color='whitesmoke'>Contact</Text>
+                    <Text textAlign='center' fontSize={['.50em', '1em']} as={Link} to={"/faq"} color='whitesmoke'>FAQ</Text>
+                    <Text textAlign='center' fontSize={['.50em', '1em']} as={Link} to={"/returnfaq"} color='whitesmoke'>Returns</Text>
                 </HStack>
             </Center>
             <Spacer />
@@ -31,7 +31,7 @@ export function Footer(){
                 <Flex flexDirection="column" w="100%" alignItems="flex-end">
                     <Image src={stripe_logo} boxSize='25px' alignSelf="self-end"/>
                     <HStack>
-                        <BsInstagram onClick={() => window.open("https://www.instagram.com/indexmojos/?hl=en")}/>
+                        <BsInstagram onClick={() => window.open("https://www.instagram.com/indexmojos/?hl=en")} color='whitesmoke'/>
 
                         <Image src={axp_logo} boxSize='12px'/>
 
