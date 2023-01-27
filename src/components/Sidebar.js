@@ -144,7 +144,7 @@ export function SideBar() {
                                                 <FilterCheckBox filter={'&subtype=Illustrations'}>Illustrations</FilterCheckBox>
                                             </ListItem>
                                             <ListItem>
-                                                <FilterCheckBox filter={'&type=Pop%20Art'}>Pop Art</FilterCheckBox>
+                                                <FilterCheckBox filter={'&subtype=Pop%20Art'}>Pop Art</FilterCheckBox>
                                             </ListItem>
                                             <ListItem>
                                                 <FilterCheckBox filter={'&subtype=Abstract'}>Abstract</FilterCheckBox>
