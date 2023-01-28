@@ -17,8 +17,8 @@ export function BoxOverlay({children, link}){
     const transitionStyles = {
         entering: { backgroundColor: 'lightgray', opacity: 1 },
         entered:  { backgroundColor: 'lightgray',opacity: 1,animation: `2s ${flashAnimation} ease-in-out` },
-        exiting:  { backgroundColor: 'darkgray',opacity: .75 },
-        exited:  { backgroundColor: 'darkgray', opacity: .75}
+        exiting:  { backgroundColor: 'darkgray',opacity: .55 },
+        exited:  { backgroundColor: 'darkgray', opacity: .55}
     };
 
     return(
