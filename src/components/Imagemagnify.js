@@ -41,6 +41,9 @@ export function ImageMagnifier({src, magnifierHeight = 150, magnifieWidth = 150,
     return (
         <>
             {React.cloneElement(children, {
+                onTouchEnter: onMouseEnter,
+                onTouchLeave: onMouseLeave,
+                onTouchMove: onMouseMove,
                 onMouseEnter: onMouseEnter,
                 onMouseMove: onMouseMove,
                 onMouseLeave: onMouseLeave,
