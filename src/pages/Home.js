@@ -25,6 +25,8 @@ import {Helmet} from "react-helmet-async";
 import {useNavigate} from "react-router-dom";
 import thinCanvas from "../res/thin-canvas1.png";
 import thinCanvas2 from "../res/thin-canvas2.png";
+import {BoxOverlay} from "../ui/Overlay";
+import {Link} from "react-router-dom"
 export function Home(){
 
 
@@ -107,20 +109,40 @@ const Featured = ({data}) => {
         <Box  w='fit-content' m='auto'>
             <Heading>Featured</Heading>
             <Divider mt={4} mb={4}/>
-            <Wrap justify='center'>
+            <Flex flexDirection='column'>
             {data.map((item, i) => {
                 return(
-                    <WrapItem key={i}>
-                        <Box bgImage={`url(https://res.cloudinary.com/hsdvgholu/${item.background})`} w='100%' backgroundSize='75%'>
+                    <Wrap justify='center' alignItems='center'>
+                        {i % 2 !== 0  && <WrapItem key={i}>
+                            <Box bgImage={`url(https://res.cloudinary.com/hsdvgholu/${item.background})`} w='100%' backgroundSize='75%'>
                             <Container backgroundColor='white'><Heading>{item.title}</Heading></Container>
                             <Divider/>
                             <FeaturedCard variants={item.variants}/>
-                        </Box>
-                        <Divider mt={4} mb={4}/>
-                    </WrapItem>
+                            </Box>
+                            <Divider mt={4} mb={4}/>
+                            </WrapItem>}
+                        <WrapItem alignSelf='center'>
+                            <BoxOverlay>
+                                <Link to={`/shop/&type=${item.type}`}>{item.type}</Link>
+                            </BoxOverlay>
+                        </WrapItem>
+                        <WrapItem alignSelf='center'>
+                            <BoxOverlay>
+                                <Link to={`/shop/&subtype=${item.subtype}`}>{item.subtype}</Link>
+                            </BoxOverlay>
+                        </WrapItem>
+                        {i % 2 === 0 && <WrapItem key={i}>
+                            <Box bgImage={`url(https://res.cloudinary.com/hsdvgholu/${item.background})`} w='100%' backgroundSize='75%'>
+                                <Container backgroundColor='white'><Heading>{item.title}</Heading></Container>
+                                <Divider/>
+                                <FeaturedCard variants={item.variants}/>
+                            </Box>
+                            <Divider mt={4} mb={4}/>
+                        </WrapItem>}
+                    </Wrap>
                 )
             })}
-            </Wrap>
+            </Flex>
         </Box>
 
     )
