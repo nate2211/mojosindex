@@ -80,20 +80,37 @@ export const Recommended = ({item}) => {
 
 
 export const SelectedVariantList = ({product, vid}) => {
-    const [index, setIndex] = useState(vid)
     const variants = product.variants
+    const [index, setindex] = useState(vid)
+    const [image, setImage] = useState(variants[index].image)
+
     const {addCart} = useCartContext()
     const {user, addwishlist} = useAuthContext()
     function addToCart(){
         let obj = Object.assign({"title": product.title, "index": product.index}, product.variants[index])
         addCart({item: obj, value: {price: product.variants[index].price, quantity: 1}})
     }
-
+    function setIndex(index){
+        setindex(index)
+        setImage(variants[index].image)
+    }
+    console.log(variants[index].mockup1)
     return(
         <>
             <ImageMagnifier>
-                <Image src={`https://res.cloudinary.com/hsdvgholu/${variants[index].image}`} boxSize={['18em']} m='auto' alt={`${variants[index].name}`}/>
+                <Image src={`https://res.cloudinary.com/hsdvgholu/${image}`} boxSize={['18em']} m='auto' alt={`${variants[index].name}`}/>
             </ImageMagnifier>
+            <Wrap justify='center'>
+                {(image === variants[index].mockup1 || image === variants[index].mockup2 )&& <WrapItem>
+                        <Image src={`https://res.cloudinary.com/hsdvgholu/${variants[index].image}`} boxSize={['5.50em', '7.50em']} onClick={() => setImage(variants[index].image)} alt={`${variants.name}`}/>
+                </WrapItem>}
+                {(variants[index].mockup1 !== null && image !== variants[index].mockup1) && <WrapItem>
+                    <Image src={`https://res.cloudinary.com/hsdvgholu/${variants[index].mockup1}`} boxSize={['4.50em', '5.50em']} onClick={() => setImage(variants[index].mockup1)} alt={`${variants.name}`}/>
+                </WrapItem>}
+                {(variants[index].mockup2 !== null && image !== variants[index].mockup2) && <WrapItem>
+                    <Image src={`https://res.cloudinary.com/hsdvgholu/${variants[index].mockup2}`} boxSize={['4.50em', '5.50em']} onClick={() => setImage(variants[index].mockup2)} alt={`${variants.name}`}/>
+                </WrapItem>}
+            </Wrap>
             <Wrap justify='center'>
                 {[].concat(variants.slice(0,index), variants.slice(index + 1)).map((variant, i) => {
                     return(

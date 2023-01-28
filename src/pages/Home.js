@@ -1,7 +1,21 @@
 import React from "react";
 import {
     WrapItem,
-    Wrap, Heading, Box, Divider, Flex, Center, Text, Button, Stack, Container, CardBody, Card, CardHeader, CardFooter
+    Wrap,
+    Heading,
+    Box,
+    Divider,
+    Flex,
+    Center,
+    Text,
+    Button,
+    Stack,
+    Container,
+    CardBody,
+    Card,
+    CardHeader,
+    CardFooter,
+    Image, HStack, VStack
 } from "@chakra-ui/react";
 import axios from "axios";
 import {useQuery} from "react-query";
@@ -9,7 +23,8 @@ import {FeaturedCard, ProductCard} from "../components/Cards";
 import {SuspenseElement} from "../ui/Suspense";
 import {Helmet} from "react-helmet-async";
 import {useNavigate} from "react-router-dom";
-
+import thinCanvas from "../res/thin-canvas1.png";
+import thinCanvas2 from "../res/thin-canvas2.png";
 export function Home(){
 
 
@@ -33,6 +48,42 @@ export function Home(){
         )
     }
 
+    function HomeDetail(){
+        const {isLoading, isError, isSuccess, error, data} = useQuery('detail', () =>
+            axios.get('https://mojos.herokuapp.com/api/products/?site=Mojos%20Index&detail=True').then((res) => res.data))
+        return(
+            <SuspenseElement isLoading={isLoading} isError={isError} isSuccess={isSuccess} error={error} data={data}>
+                <ProductDetail/>
+            </SuspenseElement>
+        )
+
+    }
+    function ProductDetail({data}){
+        const navigate = useNavigate()
+        return(
+            <Box m='auto' w='fit-content'>
+            <Heading>Thin Canvas Print</Heading>
+            <Wrap flexDirection='row'>
+                <WrapItem>
+                    <Image src={thinCanvas} boxSize={[ "20.5rem"]}/>
+                </WrapItem>
+                <WrapItem>
+                    <Image src={thinCanvas2} boxSize={[ "20.5rem"]}/>
+                </WrapItem>
+                <WrapItem h='20.5rem'>
+                    <VStack>
+                    <Text w={[ "20.5rem"]}>Slim and trim Thin Canvases come ready to hang with an attached wall mount. The canvas is stretched over pine wood.
+                        Slimmer then your regular canvas as well as cheaper this provides a high quality alternative to the traditional canvas print</Text>
+                    <Button onClick={() => navigate("/shop/&producttype=Thin Canvas Print")}>View All</Button>
+                    </VStack>
+                </WrapItem>
+
+                </Wrap>
+            </Box>
+
+        )
+    }
+
     return(
         <Box>
             <Helmet>
@@ -43,6 +94,7 @@ export function Home(){
                 />
                 <link rel="canonical" href={window.location}/>
             </Helmet>
+            <ProductDetail/>
             <HomeFeatured/>
             <HomeShowCase/>
         </Box>)

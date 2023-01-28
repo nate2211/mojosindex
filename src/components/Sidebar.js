@@ -227,6 +227,9 @@ export function SideBar() {
                                                 <FilterCheckBox filter={'&producttype=Framed%20Canvas%20Print'}>Framed Canvas Print</FilterCheckBox>
                                             </ListItem>
                                             <ListItem>
+                                                <FilterCheckBox filter={'&producttype=Thin%20Canvas%20Print'}>Thin Canvas Print</FilterCheckBox>
+                                            </ListItem>
+                                            <ListItem>
                                                 <FilterCheckBox filter={'&producttype=Tote%20Bag'}>Tote Bag</FilterCheckBox>
                                             </ListItem>
                                             <ListItem>

@@ -101,7 +101,7 @@ export function AuthContextProvider({children}) {
     }
     async function createreview(variant, review, rating){
         setLoading(true)
-        await axios.post('https://mojos.herokuapp.com/api/users/createreview/', {authuser: user.id, variant: variant.id, product: variant.product, review: review, rating: rating}).then(()=> refreshAccount()).then(() => setLoading(false)).catch((e) => errorHandle(e))
+        return await axios.post('https://mojos.herokuapp.com/api/users/createreview/', {authuser: user.id, variant: variant.id, product: variant.product, review: review, rating: rating}).then(()=> refreshAccount()).then(() => setLoading(false)).catch((e) => errorHandle(e))
     }
     async function deletereview(variant){
         setLoading(true)
