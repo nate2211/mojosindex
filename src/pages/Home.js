@@ -62,7 +62,7 @@ export function Home(){
         const navigate = useNavigate()
         return(
             <Box m='auto' w='fit-content'>
-            <Heading>Thin Canvas Print</Heading>
+            <Heading>New Product: Thin Canvas Print</Heading>
             <Wrap flexDirection='row' justify='center'>
                 <WrapItem>
                     <Image src={thinCanvas} boxSize={[ "20.5rem"]}/>
