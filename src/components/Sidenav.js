@@ -78,10 +78,19 @@ export function SideNav() {
                                                                 <SideLink to={"/shop/&producttype=Canvas%20Print"}>Canvas Prints</SideLink>
                                                             </ListItem>
                                                             <ListItem>
-                                                                <SideLink to={"/shop/&producttype=Framed%20Poster"}>Framed Poster</SideLink>
+                                                                <SideLink to={"/shop/&producttype=Thin%20Canvas%20Print"}>Thin Canvas Prints</SideLink>
+                                                            </ListItem>
+                                                            <ListItem>
+                                                                <SideLink to={"/shop/&producttype=Framed%20Canvas%20Print"}>FramedCanvas Prints</SideLink>
+                                                            </ListItem>
+                                                            <ListItem>
+                                                                <SideLink to={"/shop/&producttype=Framed%20Poster"}>Framed Posters</SideLink>
                                                             </ListItem>
                                                             <ListItem>
                                                                 <SideLink to={"/shop/&producttype=Pillow"}>Pillows</SideLink>
+                                                            </ListItem>
+                                                            <ListItem>
+                                                                <SideLink to={"/shop/&producttype=Throw%20Blanket"}>Throw Blankets</SideLink>
                                                             </ListItem>
                                                             <ListItem>
                                                                 <SideLink to={"/shop/&producttype=Towel"}>Towels</SideLink>
