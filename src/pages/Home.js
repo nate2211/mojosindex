@@ -35,7 +35,7 @@ export function Home(){
             axios.get('https://mojos.herokuapp.com/api/products/?site=Mojos%20Index&showcase=True').then((res) => res.data))
         return(
             <SuspenseElement isLoading={isLoading} isError={isError} isSuccess={isSuccess} error={error} data={data}>
-                <ShowCase/>
+                <ShowCaseTemplate/>
             </SuspenseElement>
         )
     }
@@ -45,7 +45,7 @@ export function Home(){
             axios.get('https://mojos.herokuapp.com/api/products/?site=Mojos%20Index&featured=True').then((res) => res.data))
         return(
             <SuspenseElement isLoading={isLoading} isError={isError} isSuccess={isSuccess} error={error} data={data}>
-                <Featured/>
+                <FeaturedTemplate/>
             </SuspenseElement>
         )
     }
@@ -67,13 +67,13 @@ export function Home(){
             <Heading>New Product: Thin Canvas Print</Heading>
             <Wrap flexDirection='row' justify='center'>
                 <WrapItem>
-                    <Image src={thinCanvas} boxSize={[ "20.5rem"]}/>
+                    <Image src={thinCanvas} boxSize={[ "20.5rem"]} m='1rem'/>
                 </WrapItem>
                 <WrapItem>
-                    <Image src={thinCanvas2} boxSize={[ "20.5rem"]}/>
+                    <Image src={thinCanvas2} boxSize={[ "20.5rem"]} m='1rem'/>
                 </WrapItem>
-                <WrapItem h='20.5rem'>
-                    <VStack>
+                <WrapItem h='20.5rem' >
+                    <VStack m='1rem'>
                     <Text w={[ "20.5rem"]}>Slim and trim Thin Canvases come ready to hang with an attached wall mount. The canvas is stretched over pine wood.
                         Slimmer then your regular canvas as well as cheaper this provides a high quality alternative to the traditional canvas print</Text>
                     <Button onClick={() => navigate("/shop/&producttype=Thin Canvas Print")}>View All</Button>
@@ -102,6 +102,64 @@ export function Home(){
         </Box>)
 }
 
+
+const FeaturedTemplate = ({data}) => {
+    return(
+        <Box  w='fit-content' m='auto'>
+            <Heading>Featured</Heading>
+            <Divider mt={4} mb={4}/>
+            <Flex flexDirection='column'>
+                {data.map((item, i) => {
+                    return(
+                        <React.Fragment key={i}>
+                            <Heading>{item.title}</Heading>
+                            <Text textAlign='right' position='relative'><Link to={`/shop/&type=${item.type}`} style={{color: "blue"}}>View All {item.type} Prints >></Link></Text>
+                            <Wrap key={i} justify='center'>
+                                {item.variants.map((variant, i) => {
+                                    return(
+                                        <WrapItem key={i}>
+                                            <Image src={`https://res.cloudinary.com/hsdvgholu/${variant.image}`} boxSize={[ "20.5rem"]} alt={`${variant.name} ${variant.producttype}`}/>
+                                        </WrapItem>
+                                    )
+                                })}
+                            </Wrap>
+                        </React.Fragment>
+
+                    )
+                })}
+            </Flex>
+        </Box>
+    )
+}
+
+const ShowCaseTemplate = ({data}) => {
+
+
+    return(
+        <Box w='fit-content' m='auto'>
+            <Heading>Showcase</Heading>
+            <Divider mt={4} mb={4}/>
+            {data.map((item, i) => {
+                return(
+                    <React.Fragment key={i}>
+                        <Heading>{item.title}</Heading>
+                        <Text textAlign='right' position='relative'><Link to={`/product/${item.id}&0`} style={{color: "blue"}}>View {item.title} >></Link></Text>
+                        <Wrap key={i} justify='center'>
+                            <WrapItem boxSize={[ "20.5rem"]} ><Text textAlign='middle' m='auto'>{item.desc}</Text></WrapItem>
+                            {item.variants.map((variant, i) => {
+                                return(
+                                    <WrapItem key={i}>
+                                        <Image src={`https://res.cloudinary.com/hsdvgholu/${variant.image}`} boxSize={[ "20.5rem"]} alt={`${variant.name} ${variant.producttype}`}/>
+                                    </WrapItem>
+                                )
+                            })}
+                        </Wrap>
+                    </React.Fragment>
+                )
+            })}
+        </Box>
+    )
+}
 
 
 const Featured = ({data}) => {
