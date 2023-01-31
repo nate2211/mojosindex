@@ -3,7 +3,7 @@ import {
     Button,
     Card,
     CardBody, CardFooter,
-    CardHeader, Divider,
+    CardHeader, Container, Divider,
     Flex,
     Heading,
     HStack, Image, List, ListItem, Text,
@@ -46,19 +46,13 @@ export const FullProductCard = ({data}) => {
                 />
                 <link rel="canonical" href={window.location}/>
             </Helmet>
-            <Card w='100%'>
-                <CardHeader><Heading>{item.title}</Heading></CardHeader>
-                <CardBody>
-                    <SelectedVariantList product={item} vid={parseInt(id.slice(id.indexOf('&')+1))}/>
-                </CardBody>
-            </Card>
-            <Divider mt={2} mb={2}/>
-            <Card w='100%'>
-                <CardHeader><Heading>Recommended</Heading></CardHeader>
-                <CardBody>
-                    <Recommended item={item}/>
-                </CardBody>
-            </Card>
+            <Container centerContent>
+            <Heading>{item.title}</Heading>
+            <SelectedVariantList product={item} vid={parseInt(id.slice(id.indexOf('&')+1))}/>
+            </Container>
+
+            <Heading>Recommended</Heading>
+            <Recommended item={item}/>
         </>
     )
 }

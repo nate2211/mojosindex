@@ -38,10 +38,10 @@ export function Product(){
             <FullProductCard/>
         </SuspenseElement> )
     }
-    return(<Container centerContent>
+    return(<Box>
 
         <ProductCard/>
-    </Container>)
+    </Box>)
 }
 
 
@@ -52,17 +52,14 @@ export const Recommended = ({item}) => {
     const RecommendedItems = ({data}) => {
         const navigate = useNavigate()
         return(
-            <Flex justify='center' flexDirection='column' alignItems='center'>
+            <Wrap justify='center'>
                 {data.slice(0,6).map((variant, i) => {
                     return (
-                            <Card w='15.5rem' m='.25rem'  backgroundColor='whiteAlpha.900' key={i}>
-                                <CardHeader><Heading textOverflow={"ellipsis"}>{variant.name}</Heading></CardHeader>
-                                <CardBody><Image src={`https://res.cloudinary.com/hsdvgholu/${variant.image}`} boxSize={[ "12.5rem"]} alt={`${variant.name} ${variant.producttype}`}/></CardBody>
-                                <CardFooter><Button onClick={() => navigate(`/product/${variant.product}&${variant.index}`)}>View</Button></CardFooter>
-                            </Card>
-                    )
+                        <WrapItem key={i}>
+                        <Image key={i} onClick={() => navigate(`/product/${variant.product}&${variant.index}`)} src={`https://res.cloudinary.com/hsdvgholu/${variant.image}`} boxSize={[ "12.5rem"]} alt={`${variant.name} ${variant.producttype}`} />
+                        </WrapItem>)
                 })}
-            </Flex>)
+            </Wrap>)
     }
     const RecommendedQuery = () => {
         const {isLoading, isError, isSuccess, error, data} = useQuery('recommended', () =>
@@ -94,7 +91,7 @@ export const SelectedVariantList = ({product, vid}) => {
         setindex(index)
         setImage(variants[index].image)
     }
-    console.log(variants[index].mockup1)
+
     return(
         <>
             <ImageMagnifier>
@@ -111,7 +108,7 @@ export const SelectedVariantList = ({product, vid}) => {
                     <Image src={`https://res.cloudinary.com/hsdvgholu/${variants[index].mockup2}`} boxSize={['4.50em', '5.50em']} onClick={() => setImage(variants[index].mockup2)} alt={`${variants.name}`}/>
                 </WrapItem>}
             </Wrap>
-            <Wrap justify='center'>
+            <Wrap justify='center' alignItems='center'>
                 {[].concat(variants.slice(0,index), variants.slice(index + 1)).map((variant, i) => {
                     return(
                         <WrapItem key={i}>
@@ -119,7 +116,7 @@ export const SelectedVariantList = ({product, vid}) => {
                         </WrapItem>)
                 })}
             </Wrap>
-            <Accordion allowMultiple>
+            <Accordion allowMultiple w='100%'>
                 <AccordionItem>
                     <h2>
                         <AccordionButton>
