@@ -60,7 +60,7 @@ export function ErrorContextProvider({children}){
 
     const HeadingError = () => {
         return(
-            <Flex backgroundColor='red'>
+            <Flex backgroundColor='red' w='100%' position='absolute' top={0}>
                 <Heading backgroundColor='red' w='100%'>{error}</Heading>
                 <Spacer/>
                 <Button onClick={() => {setError(null);setMessage(null)}} >X</Button>

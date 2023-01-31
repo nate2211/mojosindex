@@ -6,7 +6,7 @@ import {SideCart} from "../components/Sidecart";
 export function NavBar(){
 
     return(
-        <Grid h='10vh' templateColumns='repeat(5, 1fr)' gap={0} position='fixed' zIndex={4} w='100%' top='0' bg='lightpink'>
+        <Grid h='10vh' templateColumns='repeat(5, 1fr)' gap={0} zIndex={4} w='100%'  bg='lightpink'>
             <GridItem colSpan={2} h='100%'>
                 <Center h='100%'>
                     <SideNav/>
